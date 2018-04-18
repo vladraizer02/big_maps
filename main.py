@@ -12,7 +12,8 @@ response = None
 step = 0.005
 
 gui = GUII.GUI()
-gui.add_element(GUII.Button((350,0,90,35),"Смена"))
+smena = GUII.Button((350,0,90,35),"Смена")
+gui.add_element(smena)
 
 def izmen_mashtab(znak, delta):
     global step
@@ -63,7 +64,9 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 x, y = event.pos
-                if (440 > x > 350) and (35 > y > 0):
+                gui.get_event(event)
+                gui.render(screen)
+                if GUII.k:
                     if l == 'map':
                         l = 'sat'
                     elif l == 'sat':
